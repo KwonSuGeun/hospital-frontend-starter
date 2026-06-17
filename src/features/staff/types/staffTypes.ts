@@ -3,7 +3,7 @@
 //
 // [등록 매핑]
 //   StaffCreateForm (폼 state)
-//     → toStaffCreatePayload() — features/staff/lib/staffMapper.ts
+//     → toStaffCreatePayload() — features/staff/utils/registerForm.ts
 //     → StaffCreatePayload (multipart: staff JSON + photo File)
 //     → POST /api/staff @RequestPart("staff") StaffCreateRequestDto
 //     → Staff 엔티티 (staffStatus="재직", staffPhotoKey=SeaweedFS key)
@@ -72,33 +72,11 @@ export type StaffCreatePayload = StaffCreateRequest & {
   photo?: File | null;
 };
 
+import type { ApiResponse } from "@/lib/types/apiResponse";
+
 // --- API 응답 래퍼 (백엔드 ApiResponse<T>) ---
-export type StaffApiResponse = {
-  code: string;
-  message: string;
-  data: StaffItem[];
-};
-
-export type StaffDetailApiResponse = {
-  code: string;
-  message: string;
-  data: StaffDetailItem;
-};
-
-export type StaffCreateApiResponse = {
-  code: string;
-  message: string;
-  data: StaffItem;
-};
-
-export type DepartmentApiResponse = {
-  code: string;
-  message: string;
-  data: DepartmentItem[];
-};
-
-export type StaffDeleteApiResponse = {
-  code: string;
-  message: string;
-  data: null;
-};
+export type StaffApiResponse = ApiResponse<StaffItem[]>;
+export type StaffDetailApiResponse = ApiResponse<StaffDetailItem>;
+export type StaffCreateApiResponse = ApiResponse<StaffItem>;
+export type DepartmentApiResponse = ApiResponse<DepartmentItem[]>;
+export type StaffDeleteApiResponse = ApiResponse<null>;

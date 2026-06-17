@@ -6,7 +6,7 @@
 // ============================================================
 
 import { api } from "@/lib/Axios";
-import { unwrapStaffDetailPayload } from "../lib/staffMapper";
+import { unwrapStaffDetailPayload } from "../utils/detailResponse";
 import type {
   DepartmentApiResponse,
   StaffApiResponse,
@@ -14,7 +14,6 @@ import type {
   StaffCreatePayload,
   StaffDeleteApiResponse,
   StaffDetailApiResponse,
-  StaffDetailItem,
 } from "../types/staffTypes";
 
 // --- [목록] staffSaga → staff.tsx ---
@@ -25,7 +24,7 @@ export async function fetchStaffList() {
 
 // --- [상세] staffSaga → StaffDetail.tsx ---
 export async function fetchStaffDetail(id: string) {
-  const response = await api.get<StaffDetailApiResponse | StaffDetailItem>(`/api/staff/${id}`);
+  const response = await api.get<StaffDetailApiResponse>(`/api/staff/${id}`);
   return unwrapStaffDetailPayload(response.data);
 }
 

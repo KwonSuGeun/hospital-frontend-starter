@@ -11,7 +11,7 @@ import {
   toStaffCreatePayload,
   validateRegisterForm,
   type RegisterAddressForm,
-} from "@/features/staff/lib/staffMapper";
+} from "@/features/staff/utils/registerForm";
 import type { DepartmentItem, StaffCreateForm } from "@/features/staff/types/staffTypes";
 import {
   AvatarPlaceholderIcon,

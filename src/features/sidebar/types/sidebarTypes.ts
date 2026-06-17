@@ -10,9 +10,7 @@ export type SidebarItem = {
   children?: SidebarItem[];
 };
 
+import type { ApiResponse } from "@/lib/types/apiResponse";
+
 // --- API 응답 래퍼 (백엔드 ApiResponse<T>) ---
-export type SidebarApiResponse = {
-  code: string;
-  message: string;
-  data: SidebarItem[];
-};
+export type SidebarApiResponse = ApiResponse<SidebarItem[]>;
