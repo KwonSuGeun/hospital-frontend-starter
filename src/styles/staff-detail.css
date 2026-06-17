@@ -1,0 +1,131 @@
+/* ============================================================
+   staff-detail.css — components/staff/StaffDetail.tsx (/staff/[id] 상세)
+   ============================================================ */
+
+/* --- 페이지 레이아웃 --- */
+.staff-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100%;
+}
+
+/* --- 헤더 (뒤로가기 + 제목) --- */
+.staff-detail__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+}
+
+.staff-detail__title {
+  margin: 0;
+  margin-right: auto;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* --- 상세 패널 / 항목 목록 --- */
+.staff-detail__panel {
+  background-color: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.staff-detail__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.staff-detail__row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.staff-detail__row:last-child {
+  border-bottom: none;
+}
+
+.staff-detail__label {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.staff-detail__value {
+  color: #111827;
+  font-size: 14px;
+}
+
+/* --- 로딩 / 에러 --- */
+.staff-detail__status {
+  display: flex;
+  align-items: center;
+  min-height: 240px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.staff-detail__status--error {
+  color: #b42318;
+}
+
+.staff-detail__back-button {
+  padding: 8px 12px;
+  border: 1px solid #dde3ea;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #374151;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.staff-detail__back-button:hover {
+  background-color: #f4f7fb;
+  border-color: #c7d2e0;
+  color: #1f4fd6;
+}
+
+.staff-detail__delete-button {
+  padding: 8px 14px;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #b42318;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.staff-detail__delete-button:hover:not(:disabled) {
+  background-color: #fef2f2;
+  border-color: #f87171;
+}
+
+.staff-detail__delete-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.staff-detail__delete-error {
+  padding: 10px 14px;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  background-color: #fef2f2;
+  color: #b42318;
+  font-size: 14px;
+}

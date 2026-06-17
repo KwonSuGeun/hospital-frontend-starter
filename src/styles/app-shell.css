@@ -1,0 +1,32 @@
+/* ============================================================
+   app-shell.css — layout.tsx (사이드바 + main 영역)
+   ============================================================ */
+
+/* --- 앱 전체 레이아웃 --- */
+.app-shell {
+  min-height: 100vh;
+  background-color: #f4f5f7;
+}
+
+/* --- 고정 사이드바 (sidebar.tsx) --- */
+.app-shell__sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 240px;
+  height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  border-right: 1px solid #e3e6ea;
+}
+
+/* --- 페이지 콘텐츠 영역 (app//page.tsx) --- */
+.app-shell__main {
+  min-height: 100vh;
+  margin-left: 240px;
+  min-width: 0;
+  padding: 20px 24px;
+  overflow: auto;
+}

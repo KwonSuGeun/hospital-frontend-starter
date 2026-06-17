@@ -1,0 +1,11 @@
+/* ============================================================
+   globals.css — 전역 기본 스타일
+   layout.tsx에서 import
+   ============================================================ */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+  color: #111827;
+  background-color: #f4f5f7;
+}

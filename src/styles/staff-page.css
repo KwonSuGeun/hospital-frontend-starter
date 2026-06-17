@@ -1,0 +1,160 @@
+/* ============================================================
+   staff-page.css — components/staff/staff.tsx (/staff 목록)
+   ============================================================ */
+
+/* --- 페이지 레이아웃 --- */
+.staff-page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100%;
+}
+
+/* --- 헤더 (제목 + 등록 버튼) --- */
+.staff-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+}
+
+.staff-page__register-button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1f4fd6;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.staff-page__register-button:hover {
+  background-color: #173ea8;
+}
+
+.staff-page__title {
+  margin: 0;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* --- 목록 패널 / 테이블 --- */
+.staff-page__panel {
+  background-color: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.staff-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.staff-page__table thead {
+  background-color: #eef2f7;
+}
+
+.staff-page__table th {
+  padding: 12px 16px;
+  border-bottom: 1px solid #dde3ea;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.staff-page__table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #edf0f4;
+  color: #111827;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.staff-page__table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.staff-page__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.staff-page__table col:nth-child(1) {
+  width: 64px;
+}
+
+.staff-page__table col:nth-child(2) {
+  width: 80px;
+}
+
+.staff-page__table col:nth-child(3) {
+  width: 24%;
+}
+
+.staff-page__table col:nth-child(4) {
+  width: 24%;
+}
+
+.staff-page__photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #dde3ea;
+  background-color: #f3f4f6;
+}
+
+.staff-page__photo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* --- 로딩 / 에러 --- */
+.staff-page__status {
+  display: flex;
+  align-items: center;
+  min-height: 240px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.staff-page__status--error {
+  color: #b42318;
+}
+
+/* --- 이름 클릭 (상세 이동) --- */
+.staff-page__name-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #1f4fd6;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.staff-page__name-button:hover {
+  color: #173ea8;
+}
