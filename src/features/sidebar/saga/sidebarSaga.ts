@@ -4,7 +4,7 @@
 // ============================================================
 
 import { call, put, takeLatest } from "redux-saga/effects";
-import { fetchSidebarTree } from "../api/sidebarApi";
+import {fetchSidebarApi} from "../api/sidebarApi";
 import {
   fetchSidebarFailure,
   fetchSidebarRequest,
@@ -15,7 +15,7 @@ import type { SidebarItem } from "../types/sidebarTypes";
 // --- 메뉴 트리 조회: sidebar.tsx → GET /api/sidebar ---
 function* fetchSidebarSaga() {
   try {
-    const items: SidebarItem[] = yield call(fetchSidebarTree);
+    const items: SidebarItem[] = yield call(fetchSidebarApi);
     yield put(fetchSidebarSuccess(items));
   } catch (error) {
     const message = error instanceof Error ? error.message : "Sidebar fetch failed";
