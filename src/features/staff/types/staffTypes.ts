@@ -3,7 +3,7 @@
 //
 // [등록 매핑]
 //   StaffCreateForm (폼 state)
-//     → toStaffCreatePayload() — features/staff/lib/staffCreateMapper.ts
+//     → toStaffCreatePayload() — features/staff/lib/staffMapper.ts
 //     → StaffCreatePayload (multipart: staff JSON + photo File)
 //     → POST /api/staff @RequestPart("staff") StaffCreateRequestDto
 //     → Staff 엔티티 (staffStatus="재직", staffPhotoKey=SeaweedFS key)
