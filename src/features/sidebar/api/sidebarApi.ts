@@ -5,10 +5,11 @@
 // ============================================================
 
 import { api } from "@/lib/Axios";
-import type { SidebarApiResponse } from "../types/sidebarTypes";
+import type { SidebarApiResponse, SidebarItem } from "../types/sidebarTypes";
+import { toMenuTree } from "../utils/menuTree";
 
-// --- [메뉴 트리] GET /api/sidebar ---
-export async function fetchSidebarApi() {
+// --- [메뉴] GET /api/sidebar → flat row 조회 후 트리 조합 ---
+export async function fetchSidebarApi(): Promise<SidebarItem[]> {
   const response = await api.get<SidebarApiResponse>("/api/sidebar");
-  return response.data.data;
+  return toMenuTree(response.data.data);
 }
