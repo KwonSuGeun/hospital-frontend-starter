@@ -6,13 +6,17 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import RootReducer from "@/store/RootReducer";
+import sidebarReducer from "@/features/sidebar/slice/sidebarSlice";
+import staffReducer from "@/features/staff/slice/staffSlice";
 import rootSaga from "./RootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: RootReducer,
+  reducer: {
+    sidebar: sidebarReducer, // layout — sidebar.tsx
+    staff: staffReducer, // /staff, /staff/[id], /staff/register
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
 });
