@@ -38,7 +38,7 @@ export function toMenuTree(flatRows: SidebarMenuRow[]): SidebarItem[] {
   for (const row of flatRows) {
     const menu = menuById[row.id];
 
-    // parentId === null → 최상위 메뉴 (예: "관리")
+    // parentId ===  null→ 최상위 메뉴 (예: "관리")
     if (row.parentId === null) {
       topMenus.push(menu);
       continue;

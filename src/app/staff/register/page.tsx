@@ -4,8 +4,13 @@
 // Redux: createStaffRequest → staffSlice.create*
 // ============================================================
 
+import RequireAuth from "@/components/auth/RequireAuth";
 import StaffRegister from "@/components/staff/StaffRegister";
 
 export default function StaffRegisterPage() {
-  return <StaffRegister />;
+  return (
+    <RequireAuth>
+      <StaffRegister />
+    </RequireAuth>
+  );
 }

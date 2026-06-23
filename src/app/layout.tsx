@@ -4,7 +4,7 @@
 // ============================================================
 
 import Providers from "./Providers";
-import Sidebar from "@/components/sidebar/sidebar";
+import AppShell from "@/components/layout/AppShell";
 import "./globals.css";
 import "@/styles/app-shell.css";
 
@@ -17,14 +17,7 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <Providers>
-          <div className="app-shell">
-            {/* --- 사이드바 (전 페이지 고정) --- */}
-            <aside className="app-shell__sidebar">
-              <Sidebar />
-            </aside>
-            {/* --- 페이지별 콘텐츠 (app/.../page.tsx) --- */}
-            <main className="app-shell__main">{children}</main>
-          </div>
+          <AppShell>{children}</AppShell>
         </Providers>
       </body>
     </html>

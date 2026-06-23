@@ -4,8 +4,13 @@
 // Redux: fetchStaffRequest → staffSlice.items
 // ============================================================
 
+import RequireAuth from "@/components/auth/RequireAuth";
 import Staff from "@/components/staff/staff";
 
 export default function StaffPage() {
-  return <Staff />;
+  return (
+    <RequireAuth>
+      <Staff />
+    </RequireAuth>
+  );
 }

@@ -3,20 +3,32 @@
 // ============================================================
 // [사이드바 메뉴 항목] sidebar.tsx에서 재귀 렌더
 // 자식 있음: 토글 버튼 + 중첩 ul
-// 자식 없음: Next.js Link로 페이지 이동
+// 자식 없음: Next.js Link로 페이지 이동 (미로그인 시 LoginModal)
 // ============================================================
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { openLoginModal } from "@/features/auth/slice/authSlice";
 import type { SidebarItem } from "@/features/sidebar/types/sidebarTypes";
+import type { AppDispatch, RootState } from "@/store/Store";
 
 type SidebarMenuItemProps = {
   item: SidebarItem;
 };
 
 export default function SidebarMenuItem({ item }: SidebarMenuItemProps) {
+  const dispatch = useDispatch<AppDispatch>();
+  const { user } = useSelector((state: RootState) => state.auth);
   const hasChildren = Boolean(item.children && item.children.length > 0);
   const [open, setOpen] = useState(false);
+
+  function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
+    if (!user) {
+      event.preventDefault();
+      dispatch(openLoginModal({ message: "로그인이 필요합니다." }));
+    }
+  }
 
   // --- 부모 메뉴 (펼치기/접기) ---
   if (hasChildren) {
@@ -47,7 +59,7 @@ export default function SidebarMenuItem({ item }: SidebarMenuItemProps) {
   // --- 리프 메뉴 (링크) ---
   return (
     <li className="sidebar-nav__item">
-      <Link className="sidebar-nav__link" href={item.path}>
+      <Link className="sidebar-nav__link" href={item.path} onClick={handleLinkClick}>
         {item.label}
       </Link>
     </li>

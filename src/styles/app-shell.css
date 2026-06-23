@@ -30,3 +30,11 @@
   padding: 20px 24px;
   overflow: auto;
 }
+
+.app-shell__main--center {
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+}

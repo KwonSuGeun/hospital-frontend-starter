@@ -4,8 +4,13 @@
 // Redux: fetchStaffDetailRequest → staffSlice.detail
 // ============================================================
 
+import RequireAuth from "@/components/auth/RequireAuth";
 import StaffDetail from "@/components/staff/StaffDetail";
 
 export default function StaffDetailPage() {
-  return <StaffDetail />;
+  return (
+    <RequireAuth>
+      <StaffDetail />
+    </RequireAuth>
+  );
 }
