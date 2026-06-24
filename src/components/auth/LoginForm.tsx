@@ -1,32 +1,21 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest } from "@/features/auth/slice/authSlice";
 import type { AppDispatch, RootState } from "@/store/Store";
 import "@/styles/login.css";
 
 type LoginFormProps = {
-  mode?: "page" | "modal";
   message?: string;
 };
 
-export default function LoginForm({ mode = "page", message }: LoginFormProps) {
+export default function LoginForm({ message }: LoginFormProps) {
   const dispatch = useDispatch<AppDispatch>();
-  const router = useRouter();
-  const { user, loginLoading, loginError } = useSelector((state: RootState) => state.auth);
+  const { loginLoading, loginError } = useSelector((state: RootState) => state.auth);
 
   const [staffId, setStaffId] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    if (mode !== "page" || !user) {
-      return;
-    }
-
-    router.replace("/");
-  }, [user, router, mode]);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -38,17 +27,12 @@ export default function LoginForm({ mode = "page", message }: LoginFormProps) {
     );
   }
 
-  const formClassName = mode === "modal" ? "login-form login-form--modal" : "login-form";
-  const wrapperClassName = mode === "modal" ? undefined : "login-page";
-
-  const form = (
-    <form className={formClassName} onSubmit={handleSubmit}>
-      <h1 className="login-form__title" id={mode === "modal" ? "login-modal-title" : undefined}>
-        {mode === "modal" ? message ?? "로그인이 필요합니다." : "병원 정보시스템 로그인"}
+  return (
+    <form className="login-form login-form--modal" onSubmit={handleSubmit}>
+      <h1 className="login-form__title" id="login-modal-title">
+        {message ?? "로그인이 필요합니다."}
       </h1>
-      <p className="login-form__desc">
-        {mode === "modal" ? "계속하려면 사번과 비밀번호를 입력하세요." : "사번과 비밀번호를 입력하세요."}
-      </p>
+      <p className="login-form__desc">계속하려면 사번과 비밀번호를 입력하세요.</p>
 
       <label className="login-form__field">
         <span className="login-form__label">사번</span>
@@ -83,10 +67,4 @@ export default function LoginForm({ mode = "page", message }: LoginFormProps) {
       </button>
     </form>
   );
-
-  if (mode === "modal") {
-    return form;
-  }
-
-  return <div className={wrapperClassName}>{form}</div>;
 }
